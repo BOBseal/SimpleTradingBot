@@ -29,18 +29,18 @@ const tick = async()=> {
     await gateioClient.createLimitBuyOrder(market, buyVolume, buyPrice);
     console.log(
        
-       'New tick for ${market}Created Limit sell order for ${sellVolume}@ ${sellPrice}Create Limit buy order for ${buyVolume}@ ${buyPrice}'
+       ' New tick for ${market}Created Limit sell order for ${sellVolume}@ ${sellPrice}Create Limit buy order for ${buyVolume}@ ${buyPrice}'
         
     );
 }
 
 const run = ()=> {
     const config ={
-        asset : 'ETH',
-        base : 'USDT',
-        allocation : 0.05,
-        spread : 0.008,
-        tickInterval : 3000
+        asset : 'ETH',// your currency to trade
+        base : 'USDT',// base trade pair
+        allocation : 0.05, // percentage of total funds the bot will use for each trade -- currently set by me at 5%
+        spread : 0.008,// buy and sell  order difference in percentage from marketprice -- current at 0.7%
+        tickInterval : 3000 // frequency of trade order place and cancelling by bot
     };
     const gateClient = new ccxt.gate({
         apiKey: process.env.API_KEY,
